@@ -1,7 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
+import CardGood from '@components/CardGood.astro';
+import { playlists } from '@lib/data';
 ---
 
 <Layout title="Welcome to Astro.">
-  main
+  <section class="mt-12">
+    <h2 class="text-3xl font-bold">Buenos Dias</h2>
+
+    <div class="grid grid-cols-3 mt-4 gap-2">
+      {
+        playlists.map((item) => (
+          <CardGood href={`/playlist/${item.id}`} {...item} />
+        ))
+      }
+    </div>
+  </section>
 </Layout>

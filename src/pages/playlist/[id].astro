@@ -1,0 +1,26 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+import { playlists } from '@lib/data';
+
+const { id } = Astro.params;
+
+const { cover, title } = playlists.find((item) => item.id === id);
+---
+
+<Layout title="ccc">
+  <article class="flex" transition:name=`playlist ${id} box`>
+    <picture class="aspect-square w-1/6">
+      <img
+        class="object-cover"
+        src={cover}
+        alt={title}
+        transition:name=`image ${id} cover`
+      />
+    </picture>
+
+    <div class="w-full">
+      <h3 class="font-medium" transition:name=`title ${id} cover`>{title}</h3>
+    </div>
+  </article>
+</Layout>

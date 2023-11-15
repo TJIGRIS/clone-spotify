@@ -1,0 +1,22 @@
+---
+const { href, cover, title, id } = Astro.props;
+---
+
+<a
+  href={href}
+  class="flex items-center gap-x-2 h-[70px] hover:bg-P-background-tinted-base rounded-sm transition-all duration-200 relative overflow-hidden"
+  transition:name=`playlist ${id} box`
+>
+  <picture class="aspect-square w-1/6">
+    <img
+      class="object-cover"
+      src={cover}
+      alt={title}
+      transition:name=`image ${id} cover`
+    />
+  </picture>
+
+  <div>
+    <h3 class="font-medium" transition:name=`title ${id} cover`>{title}</h3>
+  </div>
+</a>

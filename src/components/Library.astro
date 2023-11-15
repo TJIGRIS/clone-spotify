@@ -1,0 +1,38 @@
+---
+import ItemLibrary from '@components/ItemLibrary.astro';
+
+// mocks
+import { playlists } from '@lib/data';
+
+// icons
+import LibraryIcon from '@assets/icons/Library.astro';
+import Plus from '@assets/icons/Plus.astro';
+import Row from '@assets/icons/Row.astro';
+import Button from '@components/Button.astro';
+---
+
+<section class="bg-P-background-base flex-1 rounded-lg p-2">
+  <header class="flex justify-between">
+    <div>
+      <Button>
+        <LibraryIcon />
+         Tu Biblioteca
+      </Button>
+    </div>
+
+    <div class="flex text-white">
+      <Button><Plus /></Button>
+      <Button><Row /></Button>
+    </div>
+  </header>
+
+  <main>
+    <ul>
+      {
+        playlists.map((item) => (
+          <ItemLibrary href={`/playlist/${item.id}`} {...item} />
+        ))
+      }
+    </ul>
+  </main>
+</section>

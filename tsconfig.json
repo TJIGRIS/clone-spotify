@@ -10,6 +10,12 @@
       ],
       "@icons/*": [
         "src/icons/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
       ]
     }
   }

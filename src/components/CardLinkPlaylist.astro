@@ -1,0 +1,16 @@
+---
+const { id, title, cover, artists } = Astro.props;
+---
+
+<article class="bg-zinc-700 p-2 w-52 rounded-lg pb-4">
+  <a href="#" class="flex flex-col gap-2">
+    <picture class="aspect-square rounded-lg overflow-hidden">
+      <img class="object-cover" src={cover} alt={title} />
+    </picture>
+
+    <div>
+      <h3 class="text-white">{title}</h3>
+      <small class="text-xs">{artists.join(", ")}</small>
+    </div>
+  </a>
+</article>

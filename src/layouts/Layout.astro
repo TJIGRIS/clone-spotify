@@ -1,9 +1,6 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-
-import AsideMenu from '@components/AsideMenu.astro';
-import Player from '@components/Player';
-
+import Aside from "src/pages/Aside.astro";
+import Footer from "src/pages/Footer.astro";
 interface Props {
   title: string;
 }
@@ -20,81 +17,26 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions fallback="none" />
   </head>
-  <body>
-    <div id="app" class="relative h-screen p-2 gap-2">
-      <aside class="[grid-area:aside] flex flex-col overflow-y-auto">
-        <AsideMenu />
-      </aside>
+  <body class="grid bg-zinc-950 text-white/70 h-screen p-2 gap-2">
+    <Aside />
 
-      <main class="[grid-area:main] bg-zinc-900 rounded-lg overflow-y-auto">
-        <slot />
-      </main>
+    <section
+      class="[grid-area:main] bg-zinc-900 pt-10 px-2 rounded-lg relative"
+    >
+      <slot />
+    </section>
 
-      <footer class="[grid-area:player] h-[80px]">
-        <Player client:load transition:name="media-player" transition:persist />
-      </footer>
-    </div>
-
-    <style>
-      #app {
-        display: grid;
-        grid-template-areas:
-          'aside main main'
-          'player player player';
-        grid-template-columns: 300px 1fr;
-        grid-template-rows: 1fr auto;
-      }
-    </style>
-
-    <style is:global>
-      html {
-        font-family: system-ui, sans-serif;
-        background: #131313;
-        font-family: 'CircularStd', system-ui, sans-serif;
-        color: #ffffff;
-      }
-
-      @font-face {
-        font-family: 'CircularStd';
-        src: url('/fonts/CircularStd-Medium.woff2') format('woff2');
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: 'CircularStd';
-        src: url('/fonts/CircularStd-Book.woff2') format('woff2');
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: 'CircularStd';
-        src: url('/fonts/CircularStd-Light.woff2') format('woff2');
-        font-weight: 300;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: 'CircularStd';
-        src: url('/fonts/CircularStd-Bold.woff2') format('woff2');
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: 'CircularStd';
-        src: url('/fonts/CircularStd-Black.woff2') format('woff2');
-        font-weight: 900;
-        font-style: normal;
-        font-display: swap;
-      }
-    </style>
+    <Footer />
   </body>
 </html>
+
+<style is:global>
+  body {
+    grid-template-areas:
+      "aside main"
+      "player player";
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr auto;
+  }
+</style>

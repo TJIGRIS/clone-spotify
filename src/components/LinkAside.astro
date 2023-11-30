@@ -1,0 +1,12 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<a href="#" class="flex gap-3 items-center p-2">
+  <slot />
+  {title}
+</a>

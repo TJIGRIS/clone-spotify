@@ -1,27 +1,16 @@
 ---
-import Greeting from '@components/Greeting.svelte';
-import PlaylistItemCard from '@components/PlaylistItemCard.astro';
-import Layout from '@layouts/Layout.astro';
+import Layout from "@layouts/Layout.astro";
+import CardLinkPlaylist from "@components/CardLinkPlaylist.astro";
 
-import { playlists } from '@lib/data';
+import { playlists } from "@lib/data";
 ---
 
 <Layout title="Welcome to Astro.">
-  <section
-    id="playlist-container"
-    class="relative transition-all duration-1000 bg-green-600"
-  >
-    <div class="relative z-10 px-6 pt-10">
-      <Greeting />
+  <h1 class="text-white text-4xl">Buenas noches</h1>
 
-      <div class="flex flex-wrap mt-6 gap-4">
-        {playlists.map((item) => <PlaylistItemCard playlist={item} />)}
-      </div>
-    </div>
-
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
-    >
-    </div>
+  <section class="pt-8 flex flex-wrap gap-2">
+    {playlists.map((item) => <CardLinkPlaylist {...item} />)}
   </section>
+
+  <!-- <div class="absolute bg-red-300 top-0 w-full h-full"></div> -->
 </Layout>

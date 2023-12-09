@@ -1,6 +1,7 @@
 ---
-import Aside from "src/pages/Aside.astro";
-import Footer from "src/pages/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
+import Aside from "@components/Aside.astro";
+import Player from "@components/Player";
 interface Props {
   title: string;
 }
@@ -17,6 +18,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body class="grid bg-zinc-950 text-white/70 h-screen p-2 gap-2">
     <Aside />
@@ -32,16 +34,18 @@ const { title } = Astro.props;
       </div>
     </section>
 
-    <Footer />
+    <footer class="[grid-area:player] flex justify-between items-center h-16">
+      <Player client:load transition:persist transition:name="media-player" />
+      <!-- <PlaySong client:load /> -->
+    </footer>
+    <style is:global>
+      body {
+        grid-template-areas:
+          "aside main"
+          "player player";
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: 1fr auto;
+      }
+    </style>
   </body>
 </html>
-
-<style is:global>
-  body {
-    grid-template-areas:
-      "aside main"
-      "player player";
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 1fr auto;
-  }
-</style>

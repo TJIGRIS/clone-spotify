@@ -9,7 +9,7 @@ const { id, title, cover, artists } = Astro.props;
         class="object-cover"
         src={cover}
         alt={title}
-        transition:name="image_cover"
+        transition:name=`image_album${id}`
       />
     </picture>
 

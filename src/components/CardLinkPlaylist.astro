@@ -5,7 +5,12 @@ const { id, title, cover, artists } = Astro.props;
 <article class="bg-zinc-700 p-2 max-w-[11rem] rounded-lg pb-4">
   <a href={`/playlist/${id}`} class="flex flex-col gap-2">
     <picture class="aspect-square rounded-lg overflow-hidden">
-      <img class="object-cover" src={cover} alt={title} />
+      <img
+        class="object-cover"
+        src={cover}
+        alt={title}
+        transition:name="image_cover"
+      />
     </picture>
 
     <div>

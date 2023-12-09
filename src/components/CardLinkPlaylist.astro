@@ -3,7 +3,11 @@ const { id, title, cover, artists } = Astro.props;
 ---
 
 <article class="bg-zinc-700 p-2 max-w-[11rem] rounded-lg pb-4">
-  <a href={`/playlist/${id}`} class="flex flex-col gap-2">
+  <a
+    href={`/playlist/${id}`}
+    class="flex flex-col gap-2"
+    transition:name=`playlist ${id} box`
+  >
     <picture class="aspect-square rounded-lg overflow-hidden">
       <img
         class="object-cover"
@@ -14,8 +18,8 @@ const { id, title, cover, artists } = Astro.props;
     </picture>
 
     <div>
-      <h3 class="text-white">{title}</h3>
-      <small class="text-xs">{artists.join(", ")}</small>
+      <h3 class="text-white" transition:name=`title_album ${id}`>{title}</h3>
+      <small class="text-xs" transition:name=`artists_album ${id}`>{artists.join(", ")}</small>
     </div>
   </a>
 </article>

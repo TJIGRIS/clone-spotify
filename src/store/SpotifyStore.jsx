@@ -2,5 +2,7 @@ import { create } from "zustand";
 
 export const useSpotifyStore = create((set) => ({
   playSong: false,
-  setPlaySong: (playSong) => set({ playSong })
+  currentMusic: { songs, playlists, song },
+  setPlaySong: (playSong) => set({ playSong }),
+  setCurrentMusic: (currentMusic) => set({ currentMusic })
 }))

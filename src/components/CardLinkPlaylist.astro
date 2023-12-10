@@ -2,7 +2,9 @@
 const { id, title, cover, artists } = Astro.props;
 ---
 
-<article class="bg-zinc-700 p-2 max-w-[11rem] rounded-lg pb-4">
+<article
+  class="bg-zinc-700/30 p-2 max-w-[11rem] backdrop-blur-2xl rounded-lg pb-4"
+>
   <a
     href={`/playlist/${id}`}
     class="flex flex-col gap-2"
@@ -19,7 +21,9 @@ const { id, title, cover, artists } = Astro.props;
 
     <div>
       <h3 class="text-white" transition:name=`title_album ${id}`>{title}</h3>
-      <small class="text-xs" transition:name=`artists_album ${id}`>{artists.join(", ")}</small>
+      <small class="text-xs" transition:name=`artists_album ${id}`
+        >{artists.join(", ")}</small
+      >
     </div>
   </a>
 </article>

@@ -1,3 +1,4 @@
+import { useSpotifyStore } from "@store/SpotifyStore"
 import { useState } from "react"
 import { useRef } from 'react'
 
@@ -18,8 +19,7 @@ const Volume = () => (
 )
 
 export default function Player() {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [CurrentSong, setCurrentSong] = useState(null)
+  const { isPlaying, setIsPlaying, currentMusic, setCurrentMusic } = useSpotifyStore(state => state)
   const audioRef = useRef()
 
   const handleClick = () => {

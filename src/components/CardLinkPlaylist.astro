@@ -1,9 +1,10 @@
 ---
+import ButtonPlaylist from "./ButtonPlaylist.jsx";
 const { id, title, cover, artists } = Astro.props;
 ---
 
 <article
-  class="bg-zinc-700/30 p-2 max-w-[11rem] backdrop-blur-2xl rounded-lg pb-4"
+  class="bg-zinc-700/30 p-2 max-w-[11rem] backdrop-blur-2xl rounded-lg pb-4 group relative overflow-hidden"
 >
   <a
     href={`/playlist/${id}`}
@@ -26,4 +27,6 @@ const { id, title, cover, artists } = Astro.props;
       >
     </div>
   </a>
+
+  <ButtonPlaylist id={id} client:visible />
 </article>

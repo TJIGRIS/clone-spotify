@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 export const useSpotifyStore = create((set) => ({
-  playSong: false,
-  currentMusic: { songs, playlists, song },
-  setPlaySong: (playSong) => set({ playSong }),
+  isPlaying: false,
+  currentMusic: { songs: null, playlists: null, song: null },
+  setIsPlaying: (isPlaying) => set({ isPlaying }),
   setCurrentMusic: (currentMusic) => set({ currentMusic })
 }))

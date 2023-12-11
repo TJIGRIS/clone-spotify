@@ -31,7 +31,6 @@ export default function Player() {
       audioRef.current.play()
       setIsPlaying(true)
     }
-
   }
 
   return (
@@ -52,7 +51,7 @@ export default function Player() {
         Volumen
       </div>
 
-      <audio ref={audioRef} src=""></audio>
+      <audio ref={audioRef}></audio>
     </section>
   )
 }

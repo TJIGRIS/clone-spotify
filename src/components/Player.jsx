@@ -23,21 +23,14 @@ export default function Player() {
   const audioRef = useRef()
 
   useEffect(() => {
-    if (currentMusic.playlists === null) return
-
-    const src = `/music/${currentMusic.playlists?.albumId}/0${currentMusic.song?.id}.mp3`
-    audioRef.current.src = src
-    setIsPlaying(true)
+    if (currentMusic.song) {
+      const src = `/music/${currentMusic.playlists?.albumId}/0${currentMusic.song?.id}.mp3`
+      audioRef.current.src = src
+    }
   }, [currentMusic])
 
   useEffect(() => {
-    if (currentMusic.playlists === null) return
-
-    if (isPlaying) {
-      audioRef.current.pause()
-    } else {
-      audioRef.current.play()
-    }
+    isPlaying ? audioRef.current.play() : audioRef.current.pause()
   }, [isPlaying])
 
   const handleClick = () => {

@@ -1,5 +1,5 @@
 import { useSpotifyStore } from "@store/SpotifyStore"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRef } from 'react'
 
 export const Pause = ({ className }) => (
@@ -22,15 +22,26 @@ export default function Player() {
   const { isPlaying, setIsPlaying, currentMusic, setCurrentMusic } = useSpotifyStore(state => state)
   const audioRef = useRef()
 
-  const handleClick = () => {
+  useEffect(() => {
+    if (currentMusic.playlists === null) return
+
+    const src = `/music/${currentMusic.playlists?.albumId}/0${currentMusic.song?.id}.mp3`
+    audioRef.current.src = src
+    setIsPlaying(true)
+  }, [currentMusic])
+
+  useEffect(() => {
+    if (currentMusic.playlists === null) return
+
     if (isPlaying) {
       audioRef.current.pause()
-      setIsPlaying(false)
     } else {
-      audioRef.current.src = `/music/1/02.mp3`
       audioRef.current.play()
-      setIsPlaying(true)
     }
+  }, [isPlaying])
+
+  const handleClick = () => {
+    setIsPlaying(!isPlaying)
   }
 
   return (
